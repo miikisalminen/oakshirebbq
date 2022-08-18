@@ -111,9 +111,10 @@ function Landing() {
   const Friends2 = styled.img`
     z-index: 10;
     margin: 60vh 10px;
-    float: right;
+    right: 0;
     height: 25%;
     width: auto;
+    position: absolute;
     @media only screen and (min-width: 768px) {
       height: 40%;
       width: auto;
