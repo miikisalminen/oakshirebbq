@@ -1,0 +1,45 @@
+{
+    "items":[
+        {
+            "title": "Smoked Beef Steak",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"27,99€"
+        },
+        {
+            "title": "Smoked Pork Ribs",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"23,99€"
+        },
+        {
+            "title": "Pork Sandwich",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"13,99€"
+        },
+        {
+            "title": "Smoked Beef Steak",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"27,99€"
+        },
+        {
+            "title": "Smoked Pork Ribs",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"23,99€"
+        },
+        {
+            "title": "Pork Sandwich",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"13,99€"
+        },
+        {
+            "title": "Pork Sandwich",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"13,99€"
+        },
+        {
+            "title": "Pork Sandwich",
+            "desc" : "Lightly smoked beef steak with the side of delicious potatoes",
+            "price":"13,99€"
+        }
+        
+     ]
+  }

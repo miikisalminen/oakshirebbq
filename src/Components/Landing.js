@@ -3,9 +3,13 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useSpring, animated } from "react-spring";
 
 import MenuItem from "./MenuItem";
+import Contact from "./Contact";
 
 import friends1 from "./media/friends1.svg";
 import friends2 from "./media/friends2.svg";
+import chef from "./media/chef.svg";
+
+import menuItems from "./data/menuItems.json";
 
 function Landing() {
   const Container = styled.div`
@@ -13,7 +17,17 @@ function Landing() {
     background-size: auto 150vh;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
+    min-height: 100vh;
+  `;
+
+  const Name = styled.h1`
+    font-size: 32px;
+    text-align: center;
+    padding: 50px 0;
+    @media only screen and (min-width: 768px) {
+      font-size: 54px;
+      padding: 70px 0;
+    }
   `;
 
   const Header = styled.h1`
@@ -38,9 +52,10 @@ function Landing() {
     border-radius: 2px;
     color: white;
     position: absolute;
+    top: 0;
     z-index: 2;
-    margin: 5vh 0;
-    padding: 0px 0 0px;
+    margin: 0 0;
+    padding: 10px 0 0px;
 
     text-align: center;
   `;
@@ -62,7 +77,7 @@ function Landing() {
 
   const Menu = styled.div`
     width: 100vw;
-    height: 80vh;
+    min-height: 80vh;
     background-color: #1a1a1a;
     border-radius: 2px;
     color: white;
@@ -72,11 +87,14 @@ function Landing() {
     padding: 0px 0 0px;
 
     text-align: center;
+    box-shadow: 18px 19px 0px 0px rgba(26, 26, 26, 0.62);
+    -webkit-box-shadow: 18px 19px 0px 0px rgba(26, 26, 26, 0.62);
+    -moz-box-shadow: 18px 19px 0px 0px rgba(26, 26, 26, 0.62);
   `;
 
   const GridContainer = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
   `;
 
   const Friends1 = styled.img`
@@ -103,6 +121,14 @@ function Landing() {
     }
   `;
 
+  const Chef = styled.img`
+    height: 40%;
+    width: auto;
+    z-index: 10;
+    float: right;
+    margin: -10vh 100px;
+  `;
+
   const fadeIn = useSpring({
     config: { mass: 1, tension: 200, friction: 70 },
     to: { opacity: 1, margin: "25px 0" },
@@ -111,8 +137,8 @@ function Landing() {
   });
   return (
     <Container>
-      <Parallax pages={2}>
-        <ParallaxLayer offset={0} speed={2.5}>
+      <Parallax pages={3}>
+        <ParallaxLayer offset={0} speed={3}>
           <div
             style={{
               width: "100vw",
@@ -133,17 +159,13 @@ function Landing() {
           <animated.div style={fadeIn}>
             <Welcome>
               <br />
-              <Header>Welcome to Oakshire BBQ</Header>
-              <Paragraph>
-                Here we strive to be the best when it comes to barbeque.
-                <br /> With us, there is no half assing it.
-                <br /> We go the extra mile for that fucking meat.
-              </Paragraph>
+              <Name>Oakshire BBQ</Name>
             </Welcome>
 
             <About>
+              <br />
               <Header>
-                Good ol' fashioned BBQ
+                Quality barbeque
                 <br />
                 Since 1932
               </Header>
@@ -152,42 +174,41 @@ function Landing() {
           </animated.div>
         </ParallaxLayer>
 
+        <ParallaxLayer offset={1} speed={0.3}>
+          <div
+            style={{
+              width: "100vw",
+              height: "50vh",
+              backgroundColor: "#1a1a1a",
+              opacity: 0.5,
+              zIndex: 11,
+              margin: "-10vh 0",
+            }}
+          ></div>
+        </ParallaxLayer>
         <ParallaxLayer offset={1} speed={0.2}>
+          <Chef src={chef} />
+        </ParallaxLayer>
+        <ParallaxLayer offset={1} speed={0.3}>
           <Menu>
+            <br />
             <Header>Menu</Header>
             <GridContainer>
-              <MenuItem
-                title="Smoked Beef Steak"
-                desc="Lightly smoked beef steak with the side of delicious potatoes"
-                price="23,99€"
-              />
-              <MenuItem
-                title="Smoked Beef Steak"
-                desc="Lightly smoked beef steak with the side of delicious potatoes"
-                price="23,99€"
-              />
-              <MenuItem
-                title="Smoked Beef Steak"
-                desc="Lightly smoked beef steak with the side of delicious potatoes"
-                price="23,99€"
-              />
-              <MenuItem
-                title="Smoked Beef Steak"
-                desc="Lightly smoked beef steak with the side of delicious potatoes"
-                price="23,99€"
-              />
-              <MenuItem
-                title="Smoked Beef Steak"
-                desc="Lightly smoked beef steak with the side of delicious potatoes"
-                price="23,99€"
-              />
-              <MenuItem
-                title="Smoked Beef Steak"
-                desc="Lightly smoked beef steak with the side of delicious potatoes"
-                price="23,99€"
-              />
+              {menuItems.items.map((item) => {
+                return (
+                  <MenuItem
+                    title={item.title}
+                    desc={item.desc}
+                    price={item.price}
+                  />
+                );
+              })}
             </GridContainer>
           </Menu>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={2} speed={0.2}>
+          <Contact />
         </ParallaxLayer>
       </Parallax>
     </Container>
